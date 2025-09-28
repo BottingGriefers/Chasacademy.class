@@ -29,7 +29,7 @@ while menu_is_running:
     elif menu_choice == "3":
        
         valid_volume = False  # här startar den falsk för att göra att när andvändaren skriver något så blir den True?????
-        
+        volume = 0
         # Volume mixare, här när volymen är inte  valid_volume så printar den??????????? det är också en loop inuti en loop
         while not valid_volume:
             # här visar den volymen andvändaren la till
@@ -51,7 +51,7 @@ while menu_is_running:
                 print(f"Volume set to {volume}")
                 valid_volume = True  # sen lämnar den programmet med valid_volume = True istället för false som i början
             
-            # här jag vet inte vas som pågår
+            # här jag vet inte vas som pågår3
             else:
                 print("Volume must be between 0-100")
                 continue  

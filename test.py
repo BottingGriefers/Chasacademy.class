@@ -1,53 +1,50 @@
 
-#du måste definera argument inom print menu () med en variabel och definera dem också
-def print_menu(menu_choice_number, message_string):
-    #check är en variabel som är en boolean, så den kollar om det finns 1,2,3 om det finns så checkar den om det är true
+# Lista som sparar all input som görs vid rad 1 
+studentslist = [] 
+# Här görs den att den is running True
+killerapp = True
+while killerapp:
+    # här visar den första menyn och vad allt gör 
+    menu = input("This is a menu \n Press 1. add students \n Press 2. list a student \n Press 3. Search for a student \n Press 4. Calculate their age \n Press 5. to exit \n")
+    #if menu är när du väl trycker 1 så kommer du in till den delen av programmet som har dictionary lista inuti sig 
+    if menu == "1": 
+        students = { #varför en dictionary? jo för att uppgiften sa du ska visa var i listan det Fanns namn och older
+            "Name": input("What are you called?: "),
+            "Age": int(input("How many years have you lived?: "))}
+        studentslist.append(students) # vi andvänder oss av append för att lägga till nya studenter inom listan med deras nya dictionary
+        print("Thank you for adding yourself to the database ")
+    elif menu == "2": #här skriver den ut eleverna vilka som finns i en lista och dictionary 
+        print(f"Here are the names of our students {studentslist} ")
+    elif menu == "3": #här hade jag lite roligt, när man lägger till studenter så efter åt kan man eliminera dem vilket görs att det försvinner från listan
+        find_student = input("Enter whom you want to eliminate!!!: ")
+        for students in studentslist: # namnet man uppger, inom students som är i studentslist försvinner hen 
+            if students["Name"] == find_student:
+                print(f"sending warthog towards {students} \n ")
+                confirmation = input("Confirm the strike Y/N: \n ").lower() #här får du confirmation om du vill göra det .lower står för att man inte ska skriva stora bokstäver för det kmr göra error 
+                if confirmation == "y": 
+                    studentslist.remove(students) #här den studenten försvinner
+                    print("Target is no longer with us \n ")
+                    break
+                elif confirmation == "n":
+                    print("You wussy \n" )
+                    break #forsome reason i had to use break instead of continue idk why but that fixed my problem which printed student was never here  tho it wasnt true the line on 32
+            else:
+                print("student was never here \n") #om det inte finns en student så kommer denna else
+    elif menu == "4": 
+        total_age = 0 #här är den totala summan av åldrarna av elever i början av kalkulationen 
+        avrage = len(studentslist)  # avrage variabel letar hela "len(studentslist)" len står för allting i listan 
+        for elever in studentslist: #här är själva matten du tar alla elevers ålder plussar ihop dem och dividerar med hur många elever
+            total_age = total_age + elever["Age"]
 
-    check = int(menu_choice_number) in [1, 2, 3]
-    if not check: 
-        print("invalid choice")     #check är mer kontrollerad den kollar om det valet som user valde är True, om inte då är den false och den gör print("invalid chice") eller not True
-        return 
-    print(f"You have selected option {menu_choice_number}. {message_string}" )# i menu choice number det kommer bakas in svaret man trycker pa
+        if avrage > 0: # om avrage är mer än 0 så printas det ett svar 
+            avrage_age = total_age / avrage
+            print(f" the avrage age of the class is {avrage_age}" )
+        else:
+            print("you got no students" )
+            
+         #matten var jobbig 
 
+    elif menu == "5":
+        print("Program exited")
+        killerapp = False
 
-
-
-# app_is_running är variabel som man kan nämna vad som helst
-# men det är viktigt att nämna det så man förstår
-app_is_running = True 
-                     
-
-while app_is_running: # == kollar om det är sant eller falskt, så om app_is_running = False och while app_is_running == True kommer den inte köras, men man kan köra utan == True
-                              
-    menu_choice = input("enter a choice (1-3) 3 to quit ")
-
-    message_string = "you have selected option"
-  
-
-    if menu_choice == '1':
-          message_string += f"{menu_choice}. FOODS"
-       # print_menu(int(menu_choice), "Food") #print_menu(1, "Food")
-    elif menu_choice == "2":
-          message_string += f"{menu_choice}. DRINKS"
-       # print_menu(int(menu_choice), "Drink") #print_menu(2, "Drink")   #sluta hårdkoda och skriv vad som är sant att "menu_choice är det som är vald"
-    elif menu_choice == "3":
-        message_string += f"{menu_choice}. QUITS"
-        #print_menu(int(menu_choice), "EXIT") #print_menu(3, "EXIT")     # Int är bara definerad för att göra koden mer niche men det behövs inte i python
-
-       # app_is_running = False du kan andvända quit() och exit() men app_is_running = false gör att du går ut i lopen bara
-        break #break också går ut i lopen men när men det andvänds när man inte definerar variablar 
-    else:
-        print("invalid choice")
-
-        menu_choice = input("Enter A choice again ") #THIS loops THE LOOP det finns olika sätt att göra det på men vi andvände oss av denhär,
-        #continue kan också andvändas för att Loopa loopen                                               #Testa ta bort den och tryck på option 1 eller 2 
-
-print("program exited")
-
-#scope i programering är vad den känner till för variabel i olika delar av programmet?
-#göra lite research på scope i programmering 
-# !=, ==, not True, not False, True, False, det är samma sak men olika sätt att säga dem
-# Det finns lokala och inte lokala funktioner eller variablar det betyder allt som är inom en annan parent eller säga en funktion blir lokala. ALLT SOM ÄR UTANFÖR ÄR GLOBALT
-
-
-#Slutsatsen är skriv koden så att den är automatiskt förstådd av andra och digsjälv, utan att kommentera. Andvänd inte onödig kod som gör att det runnar mer onödiga saker istället bara definera dem och ha en bra struktur 
