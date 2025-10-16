@@ -26,7 +26,7 @@ def border(story, title="", subtitle="", stats=None):
         content,
         title=title,
         subtitle=subtitle,
-        border_style="#44C264",
+        border_style="#0317fc",
         padding=(1, 2),
         width=80,
         box=box.DOUBLE
