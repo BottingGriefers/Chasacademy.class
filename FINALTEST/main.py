@@ -19,7 +19,6 @@ def press_to_continue():
             print("Just press Enter, you buffoon")
 
 
-
 def console_cleaner():
      os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -32,15 +31,14 @@ def main():
         os.system('cls' if os.name == 'nt' else 'clear')  # clear the screen each second
 
         border(f"""
-1. Start Monitoring System      [#0349fc][bold]Current time: {get_local_time()}[/#0349fc][/bold] 
-2. Create an Alarm                   [bold][#0349fc]{cpu_str}[/#0349fc][/bold] 
-3. Delete an Alarm              [bold][#0349fc]{mem_str}[/#0349fc][/bold]  
-4. Show Alarm              [bold][#0349fc]{disk_str}[/#0349fc][/bold]       
+1. Start Monitoring System              [#0349fc][bold]Current time: {get_local_time()}[/#0349fc][/bold] 
+2. Create an Alarm                      [bold][#0349fc]{cpu_str}[/#0349fc][/bold] 
+3. Delete an Alarm                      [bold][#0349fc]{mem_str}[/#0349fc][/bold]  
+4. Show Alarm                           [bold][#0349fc]{disk_str}[/#0349fc][/bold]       
 5. Monetoring 
 6. Exit
 ""","""[#fc035a]=== Main Menu ===[/#fc035a]""", "[#fc035a]↓↓↓↓↓↓[/#fc035a]")
         
-        time.sleep(1)
         alarm_manager = AlarmManager()
         # refresh every second
         menu_input = console.input(Align("[#fc035a]what is your choice[/#fc035a]", align="center")).strip().lower()
@@ -49,9 +47,8 @@ def main():
                 pass # idk what this is supposed to do
                 # time.sleep(5)
             case "2":
-                console_cleaner()
-                #print(f"CPU Usage: {cpu}%")
-                pass
+                alarm_manager.show_alarm_menu()
+                press_to_continue()
             case "3":
                 pass
             case "4":
