@@ -1,0 +1,4 @@
+George #text filen har alltid en onsynlig \n
+matilda\n
+anna\n
+bob\n
