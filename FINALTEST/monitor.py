@@ -17,4 +17,11 @@ class SystemStats:
         self.diskp = (f"Disk Usage: {disk.used / (1024 ** 3):.2f} GB / {disk.total / (1024 **3):.2f} GB")
 
         return self.cpup, self.memoryp, self.diskp 
+    
+    def get_raw_stats(self):
+        cpu = psutil.cpu_percent()
+        mem = psutil.virtual_memory().percent
+        disk = psutil.disk_usage('/').percent
+        return cpu, mem, disk
+
 status = SystemStats()

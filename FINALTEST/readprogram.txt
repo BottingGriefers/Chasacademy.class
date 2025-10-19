@@ -1,1 +1,30 @@
 so everytime i use # its for self notes just so i can go over what that thing is i may over do but its for myself 
+
+A problem that i spent 2 hours on wassssssssss alarm_manager = AlarmManager() this thingy, i had it inside alarms.py and main.py which when i tried to create an alarm it
+stored the value inside the wrong place and chat gpt was not very helpful ngl but in the end he came in clutch
+
+sencond problem was getting the border and making it neet and in the middle which i solved by watching yt 
+
+getting the monitor.py was really easy since psutil has everything documented but to get them in GB i had to do some math calculations which yt provided help for me 
+it turned out very nice
+
+cpu_str, mem_str, disk_str = stats.get_system_info() i still have trouble understandning this at 100% but if it works it works
+
+I have hardcoded so many colors and its getting a lot i should fix it, maybe.
+
+recently encounterd a problem with this little functiosn  choice = console.input(Align("[#fc035a][bold]what is your choice[/#fc035a][/bold]", align="center")).strip().lower()
+            elif choice == "4":
+                console.print(Align(f"[#ffffff][bold]Returning to the main menu.[/bold][/#ffffff]", align="center"))
+                break <----
+
+            while True:  
+                if hardware:  # only continue if a valid hardware type was chosen
+                    level_input = console.input(Align(f"[#fc035a] [bold]Now type the percentage for the {hardware} alarm (1-100):[/#fc035a][/bold]", align="center")).strip().lower()
+the problem was if you wanted to exit the program you had to input a valid hardware and just 4 is not a valid hardware, so i managed to fix it my putting in break inside the if statement
+how i managed to solve it was reading in the terminal and trying to fix the fucnintio to do what it was supposed to do RETURN TO MENU
+
+another problem was importing and doing your own mp4 file as an alarm, i just ignored it and made "my own alarm" 
+
+I tried again doing the mp3 file but that is not working so i gave up
+
+                 
