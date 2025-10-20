@@ -27,4 +27,5 @@ another problem was importing and doing your own mp4 file as an alarm, i just ig
 
 I tried again doing the mp3 file but that is not working so i gave up
 
+the problem i also faced was running it on linux i have made some changed but have not tried it yet. PLeASE WORK
                  
