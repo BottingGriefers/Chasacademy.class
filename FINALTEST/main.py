@@ -1,5 +1,4 @@
 import time
-import psutil
 from alarms import *
 from design import *
 from monitor import *
@@ -12,8 +11,7 @@ else:
     import select
     import termios
     import tty
-
-    winsound = None
+    import sys
 
 from datetime import datetime
 
@@ -146,7 +144,4 @@ def main():
                 quit()
             case _:
                 pass
-        # 🟢 Start the program
-
-
 main()

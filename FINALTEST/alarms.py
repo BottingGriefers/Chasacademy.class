@@ -202,11 +202,13 @@ class AlarmManager:
 
     def custom_alarm_sound(self):
         # Rising pitch alarm
-        for freq in range(100, 500, 15):  # 500 Hz to 1500 Hz
-            winsound.Beep(freq, 30)  # 100 ms per tone
-        for freq in range(400, 500, -330):  # back down
-            winsound.Beep(freq, 30)
-
+        try:
+            for freq in range(100, 500, 15):  # 500 Hz to 1500 Hz
+                winsound.Beep(freq, 30)  # 100 ms per tone
+            for freq in range(400, 500, -330):  # back down
+                winsound.Beep(freq, 30)
+        except:
+            None
     def check_alarms(self, stats):
 
         cpu, mem, disk = stats.get_raw_stats()
