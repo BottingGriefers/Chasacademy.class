@@ -2,13 +2,11 @@ from design import *
 from rich.console import Console
 from rich.align import Align
 from monitor import *
-
 if os.name == "nt":
     import winsound
 else:
     winsound = None
 import tkinter as tk
-
 console = Console()
 getstats = SystemStats()
 
@@ -21,8 +19,21 @@ class AlarmManager:
             "cpu": [],
             "memory": [],
             "disk": [],
-        }  # this is a dict that gives each object its own storage, so we can use it for showing object and having the doing smth
+        }  
+         # this is a dict that gives each object its own storage, so we can use it for showing object and having the doing smth
 
+    def show_alarm_menu(self):
+        # Display the options for configuring alarms.
+        border(
+            "1. CPU usage\n"
+            "2. Memory usage\n"
+            "3. Disk usage\n"
+            "4. Back to main menu",
+            "[bold][#fc035a]=== Create an Alarm ===[/#fc035a][/bold]",
+            "[#fc035a][bold]↓↓↓↓↓↓[/bold][/#fc035a]",
+        )
+        return
+    
     def critical_alert(self, message):
         root = tk.Tk()
         root.attributes("-fullscreen", True)  # full-screen window
@@ -36,19 +47,8 @@ class AlarmManager:
         label.pack(expand=True)
 
         root.after(2000, root.destroy)
-        root.mainloop()
+        root.mainloop() 
 
-    def show_alarm_menu(self):
-        # Display the options for configuring alarms.
-        border(
-            "1. CPU usage\n"
-            "2. Memory usage\n"
-            "3. Disk usage\n"
-            "4. Back to main menu",
-            "[bold][#fc035a]=== Create an Alarm ===[/#fc035a][/bold]",
-            "[#fc035a][bold]↓↓↓↓↓↓[/bold][/#fc035a]",
-        )
-        return
 
     # This is the one that delets a specific alarm(thanks chatgpt)
     def delete_alarm(self, hardware_type):
@@ -123,7 +123,7 @@ class AlarmManager:
 
         for hardware, levels in self.alarms.items():
             if levels:
-                for lvl in levels:
+                for lvl in sorted(levels):
                     console.print(
                         Align(
                             f"[bold][#0349fc]{hardware.capitalize()} alarm: [/bold][/#0349fc][#fc035a][bold]{lvl}%[/#fc035a][/bold]",
@@ -134,7 +134,7 @@ class AlarmManager:
                 console.print(
                     Align(
                         f"[bold][#0349fc]{hardware.capitalize()} alarm: [/bold][/#0349fc][#fc035a][bold]\-/[/#fc035a][/bold]",
-                        align="center",
+                        align="center".strip()
                     )
                 )
         # show all alarms
@@ -150,31 +150,39 @@ class AlarmManager:
                     )
                 )
                 .strip()
-                .lower()
             )
-            if choice == "1":
-                hardware = "cpu"
-            elif choice == "2":
-                hardware = "memory"
-            elif choice == "3":
-                hardware = "disk"
-            elif choice == "4":
-                console.print(
-                    Align(
-                        f"[#ffffff][bold]Returning to the main menu.[/bold][/#ffffff]",
-                        align="center",
+            try:
+                choice = str(int(choice))  # Ensure choice is a string of an integer
+                if choice == "1":
+                    hardware = "cpu"
+                elif choice == "2":
+                    hardware = "memory"
+                elif choice == "3":
+                    hardware = "disk"
+                elif choice == "4":
+                    console.print(
+                        Align(
+                            f"[#ffffff][bold]Returning to the main menu.[/bold][/#ffffff]",
+                            align="center",
+                        )
                     )
-                )
-                break
-
-            else:
+                else:
+                    console.print(
+                        Align(
+                            f"[#ffffff][bold]Invalid choice. Please restart the program and choose 1-4.\n[/bold][/#ffffff]",
+                            align="center",
+                        )
+                    )
+                    break
+            except ValueError:
                 console.print(
                     Align(
-                        f"[#ffffff][bold]Invalid choice. Please restart the program and choose 1-4.\n[/bold][/#ffffff]",
+                        f"[#ffffff][bold]Invalid input. Please enter a number between 1 and 4.[/bold][/#ffffff]",
                         align="center",
                     )
                 )
                 continue
+
             while True:
                 if hardware:  # only continue if a valid hardware type was chosen
                     level_input = (
@@ -184,7 +192,7 @@ class AlarmManager:
                                 align="center",
                             )
                         )
-                        .strip()
+                       
                         .lower()
                     )
                     if level_input.isdigit() and 1 <= int(level_input) <= 100:

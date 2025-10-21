@@ -29,3 +29,8 @@ I tried again doing the mp3 file but that is not working so i gave up
 
 the problem i also faced was running it on linux i have made some changed but have not tried it yet. PLeASE WORK
                  
+Tried to make my code less by removing .capitalize() but it seems i had problems in the dict for some unkown reason so we keeping .capitalize() 
+
+To create the logging function or part was quite easy i watched a youtube video which was simple enough to create what i wanted.
+
+
