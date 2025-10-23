@@ -34,16 +34,18 @@ class AlarmManager:
         )
         return
     
+    #makes a full screen alert window
     def critical_alert(self, message):
         root = tk.Tk()
-        root.attributes("-fullscreen", True)  # full-screen window
-        root.attributes("-topmost", True)
-        root.configure(bg="#000000")  # background color
+        root.attributes("-fullscreen", True) 
+        root.attributes("-topmost", True) 
+        root.configure(bg="#000000") 
 
         # Add a centered message
         label = tk.Label(
             root, text=message, font=("Arial", 48, "bold"), fg="red", bg="#000000"
         )
+        # tells pack to expand the widget
         label.pack(expand=True)
 
         root.after(2000, root.destroy)
@@ -191,9 +193,7 @@ class AlarmManager:
                                 f"[#fc035a] [bold]Now type the percentage for the {hardware} alarm (1-100):[/#fc035a][/bold]",
                                 align="center",
                             )
-                        )
-                       
-                        .lower()
+                        ).strip()
                     )
                     if level_input.isdigit() and 1 <= int(level_input) <= 100:
                         level = int(level_input)

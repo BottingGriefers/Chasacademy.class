@@ -33,4 +33,5 @@ Tried to make my code less by removing .capitalize() but it seems i had problems
 
 To create the logging function or part was quite easy i watched a youtube video which was simple enough to create what i wanted.
 
+Cleaning out the program i noticed i had a ton of stuff which i didnt need that was just taking up space
 

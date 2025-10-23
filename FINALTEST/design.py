@@ -13,7 +13,7 @@ console = Console()
 def border(story, title="", subtitle=""):
     os.system("cls" if os.name == "nt" else "clear")
     content = Columns(
-        [f"[#ffffff]{story}[/#ffffff]"], expand=True, equal=False
+        [f"[#ffffff]{story}[/#ffffff]"]
     )
 
     panel = Panel(

@@ -2,10 +2,6 @@ import psutil
 
 
 class SystemStats:
-    def __init__(self):
-        self.cpup = None
-        self.memoryp = None
-        self.diskp = None
 
     def get_system_info(self):
 
